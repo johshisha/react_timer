@@ -1,0 +1,57 @@
+{
+  "name": "react_timer",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "gulp"
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "react"
+    ],
+    "env": {
+      "development": {
+        "presets": [
+          "react-hmre"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "plugins": [
+      "import"
+    ],
+    "env": {
+      "browser": true
+    }
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "del": "^3.0.0",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-eslint": "^4.0.0",
+    "gulp-util": "^3.0.8",
+    "react-hot-loader": "^3.0.0",
+    "webpack": "^3.7.0",
+    "webpack-dev-server": "^2.9.1",
+    "webpack-stream": "^4.0.0"
+  }
+}
