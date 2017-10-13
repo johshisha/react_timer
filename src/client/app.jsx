@@ -3,13 +3,11 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Count from './Count';
-import Message from './Message';
+import Timer from './Timer';
 
 const App = () => (
   <div>
-    <Message />
-    <Count />
+    <Timer title="Test Timer" />
   </div>
 );
 

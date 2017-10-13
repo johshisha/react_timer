@@ -1,0 +1,15 @@
+html,body{
+  height:100%;
+}
+
+.timerComponent {
+  border: medium solid gray;
+}
+
+.title {
+  font-size: 1.5em;
+}
+
+.timer {
+  font-size: 2.0em;
+}
