@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles/custom.css';
+import CompleteTimerModal from './CompleteTimerModal';
 
 class Timer extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Timer extends Component {
     this.stop = this.stop.bind(this);
     this.start = this.start.bind(this);
     this.delete = this.delete.bind(this);
+    this.complete = this.complete.bind(this);
 
     this.state = {
       id: props.id,
@@ -57,6 +59,10 @@ class Timer extends Component {
     this.props.delete(this.state.id);
   }
 
+  complete() {
+    this.stop();
+  }
+
   countUp() {
     this.setState({
       tick: this.state.tick + 1,
@@ -71,6 +77,7 @@ class Timer extends Component {
         <div className={styles.timer}>{this.state.tick}</div>
         <button onClick={this.changeRunState}>{this.btn_text}</button>
         <button onClick={this.delete}>Remove</button>
+        <CompleteTimerModal complete={this.complete} />
       </div>
     );
   }
