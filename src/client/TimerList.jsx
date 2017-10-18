@@ -6,25 +6,26 @@ import PropTypes from 'prop-types';
 
 import styles from './styles/custom.css';
 import Timer from './Timer';
+import AddTimerModal from './AddTimerModal';
 
 class TimerList extends Component {
   constructor(props) {
     super(props);
     this.addTimer = this.addTimer.bind(this);
     this.removeTimer = this.removeTimer.bind(this);
-    this.msg = this.props.msg;
     this.state = {
       timerComponents: [],
       nextId: 1,
     };
   }
 
-  addTimer() {
+  addTimer(title, desc) {
     const { nextId } = this.state;
     this.setState({
       timerComponents: this.state.timerComponents.concat([{
         id: nextId,
-        title: `Test Timer #${nextId}`,
+        title: `#${nextId}: ${title}`,
+        desc,
         delay: 1000,
       }]),
       nextId: nextId + 1,
@@ -47,7 +48,7 @@ class TimerList extends Component {
   render() {
     return (
       <div id="timer_wrapper">
-        <button onClick={this.addTimer}>{this.msg}</button>
+        <AddTimerModal msg={this.props.msg} add={this.addTimer} />
         <div className={styles.timerComponentsList}>
           {this.renderList()}
         </div>

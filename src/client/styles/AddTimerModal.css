@@ -1,0 +1,63 @@
+.newButton {
+  display: block;
+  width: 30%;
+  font-size: 1.2em;
+  margin: 10px;
+}
+
+.modal {
+  margin: auto;
+  margin-top: 100px;
+  padding: 20px;
+  padding-bottom: 50px;
+  background-color: white;
+  border: solid 2px gray;
+  width: 80%;
+  max-width: 1000px;
+
+}
+
+.modalWrapper {
+  margin: auto;
+  width: 70%;
+  max-width: 700px;
+}
+
+.modalForm {
+  margin: auto;
+  width: 70%;
+  height: auto;
+}
+
+.formInput {
+  padding: 3px;
+  margin: 10px 0;
+  display: block;
+  width: 100%;
+}
+
+.formTextArea {
+  padding: 3px;
+  margin: 10px 0;
+  display: block;
+  width: 100%;
+}
+
+.formButton {
+  display: block;
+  padding: 3px;
+  margin: 10px 0;
+  width: 100%;
+  font-size: 1.3em;
+}
+
+.cancelArea {
+  width: 100%;
+}
+
+.cancelButton {
+  display: block;
+  margin-left: auto;
+  width: 30%;
+  font-size: 1.0em;
+}

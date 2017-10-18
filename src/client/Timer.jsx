@@ -67,6 +67,7 @@ class Timer extends Component {
     return (
       <div className={styles.timerComponent}>
         <div className={styles.title}>{this.props.title}</div>
+        <div className={styles.desc}>{this.props.desc}</div>
         <div className={styles.timer}>{this.state.tick}</div>
         <button onClick={this.changeRunState}>{this.btn_text}</button>
         <button onClick={this.delete}>Remove</button>
@@ -78,6 +79,7 @@ class Timer extends Component {
 Timer.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
   delay: PropTypes.number.isRequired,
   delete: PropTypes.func.isRequired,
 };
