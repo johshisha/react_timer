@@ -1,8 +1,10 @@
 /* eslint max-len: ["error", 140] */
+/* eslint-disable arrow-parens */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
+import request from 'superagent';
 
 import styles from './styles/AddTimerModal.css';
 
@@ -12,10 +14,9 @@ class CompleteTimerModal extends Component {
     this.state = {
       showModal: false,
       completed: false,
-      link: '',
-      memo: '',
     };
 
+    this.postToSlack = this.postToSlack.bind(this);
     this.complete = this.complete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -35,17 +36,43 @@ class CompleteTimerModal extends Component {
     const link = e.target.link.value;
     const memo = e.target.memo.value;
     this.complete(link, memo);
-    this.setState({
-      showModal: false,
-      link,
-      memo,
-    });
+    this.setState({ showModal: false });
   }
 
   complete(link, memo) {
-    console.log(link, memo);
     this.setState({ completed: true });
-    this.props.complete();
+    const tick = this.props.complete();
+    this.postToSlack(tick, link, memo);
+  }
+
+  postToSlack(tick, link, memo) {
+    const { title, desc } = this.props;
+    const ret = {};
+    window.location.search.slice(1).split('&').forEach(query => {
+      const r = query.split('=');
+      if (r.length === 2) {
+        ret[r[0].trim()] = r[1].trim();
+      }
+    });
+    const payload = {
+      username: 'ReactTimer',
+      text: ret.username,
+      icon_emoji: ':alarm_clock:',
+      attachments: [{
+        title: `${title} is completed!!`,
+        text: `Description: ${desc}\nElapsed time: ${tick}\nProduct: ${link}\nMemo: ${memo}`,
+        color: '#59ff00',
+      }],
+    };
+    if (ret.url) {
+      request
+        .post(ret.url)
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .send(JSON.stringify(payload))
+        .end((err, res) => {
+          console.log(res.text);
+        });
+    }
   }
 
   renderState() {
@@ -86,6 +113,8 @@ class CompleteTimerModal extends Component {
 
 CompleteTimerModal.propTypes = {
   complete: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
 };
 
 export default CompleteTimerModal;

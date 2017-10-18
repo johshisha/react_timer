@@ -53,6 +53,7 @@ class Timer extends Component {
     });
     this.btn_text = 'Start';
     clearInterval(this.interval);
+    return this.state.tick;
   }
 
   delete() {
@@ -60,7 +61,7 @@ class Timer extends Component {
   }
 
   complete() {
-    this.stop();
+    return this.stop();
   }
 
   countUp() {
@@ -77,7 +78,7 @@ class Timer extends Component {
         <div className={styles.timer}>{this.state.tick}</div>
         <button onClick={this.changeRunState}>{this.btn_text}</button>
         <button onClick={this.delete}>Remove</button>
-        <CompleteTimerModal complete={this.complete} />
+        <CompleteTimerModal complete={this.complete} {...this.props} />
       </div>
     );
   }
