@@ -3,11 +3,11 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Timer from './Timer';
+import TimerList from './TimerList';
 
 const App = () => (
   <div>
-    <Timer title="Test Timer" />
+    <TimerList />
   </div>
 );
 
