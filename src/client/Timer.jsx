@@ -19,6 +19,7 @@ class Timer extends Component {
     this.state = {
       id: props.id,
       tick: 0,
+      time: '00時間00分00秒',
       running: true,
     };
   }
@@ -53,7 +54,7 @@ class Timer extends Component {
     });
     this.btn_text = 'Start';
     clearInterval(this.interval);
-    return this.state.tick;
+    return this.state.time;
   }
 
   delete() {
@@ -65,8 +66,13 @@ class Timer extends Component {
   }
 
   countUp() {
+    const newTick = this.state.tick + 1;
+    const hour = Math.floor(newTick / 3600);
+    const minute = Math.floor((newTick / 60) % 60);
+    const second = newTick % 60;
     this.setState({
-      tick: this.state.tick + 1,
+      time: `${(`00${hour}`).slice(-2)}時間${(`00${minute}`).slice(-2)}分${(`00${second}`).slice(-2)}秒`,
+      tick: newTick,
     });
   }
 
@@ -75,7 +81,7 @@ class Timer extends Component {
       <div className={styles.timerComponent}>
         <div className={styles.title}>{this.props.title}</div>
         <div className={styles.desc}>{this.props.desc}</div>
-        <div className={styles.timer}>{this.state.tick}</div>
+        <div className={styles.timer}>{this.state.time}</div>
         <button onClick={this.changeRunState}>{this.btn_text}</button>
         <button onClick={this.delete}>Remove</button>
         <CompleteTimerModal complete={this.complete} {...this.props} />
