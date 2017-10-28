@@ -18,13 +18,14 @@ const paths = {
   clientBundle: 'dist/client-bundle.js?(.map)',
   libDir: 'lib',
   distDir: 'dist',
+  publickDir: 'public',
 };
 
 // Compile files to distDir
-gulp.task('build', ['lint', 'clean'], () =>
+gulp.task('build', ['lint'], () =>
   gulp.src(paths.clientEntryPoint)
     .pipe(webpackStream(webpackConfig))
-    .pipe(gulp.dest(paths.distDir)),
+    .pipe(gulp.dest(paths.publickDir)),
 );
 
 gulp.task('lint', () =>
