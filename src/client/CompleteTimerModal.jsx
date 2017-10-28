@@ -67,7 +67,8 @@ class CompleteTimerModal extends Component {
     if (ret.url) {
       request
         .post(ret.url)
-        .set('Content-Type', 'application/x-www-form-urlencoded')
+        // .set('Content-Type', 'application/x-www-form-urlencoded')
+        // .set('Content-Type', 'application/json')
         .send(JSON.stringify(payload))
         .end((err, res) => {
           console.log(res.text);

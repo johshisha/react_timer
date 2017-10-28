@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2986fc1f1c42db44ed0b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "618aa56cd52e33637eaa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -50947,7 +50947,10 @@ var CompleteTimerModal = _wrapComponent('CompleteTimerModal')(function (_Compone
         }]
       };
       if (ret.url) {
-        _superagent2.default.post(ret.url).set('Content-Type', 'application/x-www-form-urlencoded').send(JSON.stringify(payload)).end(function (err, res) {
+        _superagent2.default.post(ret.url)
+        // .set('Content-Type', 'application/x-www-form-urlencoded')
+        // .set('Content-Type', 'application/json')
+        .send(JSON.stringify(payload)).end(function (err, res) {
           console.log(res.text);
         });
       }
